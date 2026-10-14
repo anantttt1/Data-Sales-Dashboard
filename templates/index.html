@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d14"><title>SalesScope — Revenue intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="shell">
+    <aside class="rail">
+      <a class="brand" href="/" aria-label="SalesScope home"><span class="brand-mark"><i></i><i></i><i></i></span><span>sales<span class="brand-light">scope</span></span></a>
+      <div class="rail-caption">WORKSPACE</div>
+      <a class="nav-item active" aria-current="page" href="#overview"><span class="nav-glyph">◫</span>Overview</a>
+      <div class="rail-bottom"><span class="live-dot"></span><span>Session-only data</span><span class="privacy">NOT STORED</span></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div class="crumb">Workspace <span>/</span> <b>Overview</b></div><div class="top-meta"><span class="dataset-dot"></span><span id="dataset-label">Sample dataset</span><span class="divider"></span><span class="date-label" id="data-range">—</span></div></header>
+      <section class="welcome" id="overview"><div><div class="eyebrow"><span class="sparkle">✳</span> YOUR BUSINESS, IN FOCUS</div><h1>Know what’s<br><em>moving the needle.</em></h1><p class="lede">A clearer view of your sales performance, all in one place.</p></div>
+        <div class="welcome-actions"><input id="file-input" type="file" accept=".csv,text/csv" hidden><button class="upload-btn" id="upload-btn"><span>＋</span> Import CSV</button><a class="sample-link" href="/api/sample">Get sample data <span>↗</span></a></div>
+      </section>
+      <div class="notice" id="notice" role="status" aria-live="polite"></div>
+      <section class="filter-row"><div class="section-kicker">PERFORMANCE SNAPSHOT <span class="line"></span></div><div class="filters"><label>FROM<input id="from-date" type="date"></label><span class="filter-dash">—</span><label>TO<input id="to-date" type="date"></label><label>CATEGORY<select id="category-filter"><option value="">All</option></select></label><label>REGION<select id="region-filter"><option value="">All</option></select></label><button id="apply-filter" class="filter-apply">Apply</button></div></section>
+      <section class="kpis" aria-label="Key performance indicators">
+        <article class="kpi-card featured"><div class="card-top"><span>NET REVENUE</span><span class="card-icon">↗</span></div><div class="kpi-value" id="revenue">—</div><div class="kpi-foot"><span class="trend-pill" id="growth">—</span><span>vs previous 30 days</span></div><div class="card-orbit"></div></article>
+        <article class="kpi-card"><div class="card-top"><span>ORDERS</span><span class="mini-icon">⌑</span></div><div class="kpi-value" id="orders">—</div><div class="kpi-foot"><span class="foot-muted">Across selected period</span></div><div class="kpi-accent"></div></article>
+        <article class="kpi-card"><div class="card-top"><span>AVG. ORDER VALUE</span><span class="mini-icon">⌁</span></div><div class="kpi-value" id="aov">—</div><div class="kpi-foot"><span class="foot-muted">Revenue per order</span></div><div class="kpi-accent accent-lilac"></div></article>
+        <article class="kpi-card"><div class="card-top"><span>REPEAT CUSTOMERS</span><span class="mini-icon">⟲</span></div><div class="kpi-value" id="repeat">—<small>%</small></div><div class="kpi-foot"><span class="foot-muted">Customers with 2+ orders</span></div><div class="card-accent-number">02</div></article>
+      </section>
+      <section class="charts-grid">
+        <article class="panel revenue-panel"><div class="panel-head"><div><div class="panel-title">Revenue over time</div><div class="panel-sub">Monthly net sales performance</div></div><div class="chart-legend"><span></span>Revenue</div></div><div class="chart-wrap"><canvas id="revenue-chart" aria-label="Monthly revenue chart"></canvas></div></article>
+        <article class="panel products-panel"><div class="panel-head"><div><div class="panel-title">Top products</div><div class="panel-sub">Ranked by net revenue</div></div><span class="rank-tag">TOP 6</span></div><div id="products-list" class="rank-list"></div></article>
+      </section>
+      <section class="lower-grid"><article class="panel regions-panel"><div class="panel-head"><div><div class="panel-title">Revenue by region</div><div class="panel-sub">Where your customers are</div></div><span class="mini-icon">◎</span></div><div id="regions-list" class="region-list"></div></article>
+        <aside class="insight-card"><div class="insight-orb"></div><div class="insight-label"><span>✳</span> QUICK READ</div><h2 id="insight-title">Your snapshot is ready.</h2><p id="insight-copy">Upload a dataset or explore the sample to see what’s driving your business.</p><div class="insight-foot"><span class="insight-bar"></span> GENERATED FROM YOUR DATA</div></aside></section>
+      <footer><span>SALESSCOPE <span class="footer-dot">•</span> SALES INTELLIGENCE</span><span id="row-count">—</span></footer>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
