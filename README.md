@@ -37,7 +37,7 @@ The server checks ports starting at `5001` and opens the first available address
 
 ## Deploy to Vercel
 
-The repository is configured as a Flask project for Vercel's Python Functions. The root-level `app.py` exports `app`; `requirements.txt` installs Flask and pandas; `vercel.json` explicitly bundles the HTML template and sample CSV used at runtime. `public/` contains CDN-served CSS and JavaScript. There is no database, secret, or environment variable to configure for the demo.
+Vercel detects the root-level Flask `app.py` automatically and deploys it as a Python Function. `requirements.txt` installs Flask and pandas, and `public/` contains the CDN-served CSS and JavaScript. No custom `vercel.json`, build command, database, secret, or environment variable is required for this demo.
 
 1. In Vercel, choose **Add New → Project** and import `anantttt1/Data-Sales-Dashboard` from GitHub.
 2. Keep the project root at the repository root and use Vercel's detected Flask/Python settings.
@@ -69,6 +69,6 @@ templates/index.html   Dashboard markup
 public/styles.css      Responsive visual system
 public/app.js          Charts, filters, upload flow, API integration
 sample_sales.csv       Fictional example data
-vercel.json            Function file inclusion for deployment
 requirements.txt       Python dependencies
 ```
+
