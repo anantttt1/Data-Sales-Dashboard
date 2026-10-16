@@ -14,7 +14,8 @@ SalesScope is a portfolio project for exploring retail sales performance. It pai
 
 - KPI cards, monthly revenue chart, top products, regional breakdown, and a data-generated quick read.
 - Working date, category, and region filters backed by the Flask analytics endpoint.
-- CSV upload with common header aliases; supports revenue or quantity × unit price.
+- Flexible CSV import: your columns can have any names. SalesScope matches them by name ("Bill Date", "Sales Amount (₹)", `OrderDate`), then by content (a column full of dates is the date), and shows what it chose so you can fix any column from a dropdown.
+- Missing columns no longer block an import: no date means no trend chart or growth, no amount column means rows are counted, no product/region means those panels stay empty.
 - Distinct order counts when order IDs are present; negative revenue is retained as returns.
 - Uploads are processed in memory and are not saved or retained by the app.
 - Responsive layouts for desktop, tablet, and mobile; subtle 3D hover motion respects reduced-motion settings.
@@ -34,6 +35,15 @@ python app.py
 ```
 
 The server checks ports starting at `5001` and opens the first available address. To analyze your own data, use **Import CSV**. The maximum upload is 4 MB.
+
+### Bring your own CSV
+
+- Accepts `.csv`, `.tsv` and `.txt`; comma, semicolon, tab or pipe separated; UTF-8, UTF-16 or Windows/Latin-1 encoding.
+- Amounts may include currency symbols or thousands separators (`₹1,680.00`, `$1,200`); `(500)` is read as -500. The currency symbol (₹ $ € £ ¥) is detected and used on the dashboard.
+- Dates are read in most common formats. For `04/01/2025`-style dates the day/month order is inferred from the data (a value like `13/01/2025` proves day-first); if every value is 12 or below it is ambiguous, so SalesScope assumes month-first and lets you switch with **Date order**.
+- Revenue comes from an amount column, or quantity × unit price, or (as a last resort) a guessed numeric column. Anything guessed is tagged *guessed* in **Detected columns**.
+- Exact duplicate rows are removed, and the dashboard tells you how many.
+
 
 ## Deploy to Vercel
 

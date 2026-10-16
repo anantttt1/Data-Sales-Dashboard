@@ -19,12 +19,17 @@
     <main class="main">
       <header class="topbar"><div class="crumb">Workspace <span>/</span> <b>Overview</b></div><div class="top-meta"><span class="dataset-dot"></span><span id="dataset-label">Sample dataset</span><span class="divider"></span><span class="date-label" id="data-range">—</span></div></header>
       <section class="welcome" id="overview"><div><div class="eyebrow"><span class="sparkle">✳</span> YOUR BUSINESS, IN FOCUS</div><h1>Know what’s<br><em>moving the needle.</em></h1><p class="lede">A clearer view of your sales performance, all in one place.</p></div>
-        <div class="welcome-actions"><input id="file-input" type="file" accept=".csv,text/csv" hidden><button class="upload-btn" id="upload-btn"><span>＋</span> Import CSV</button><a class="sample-link" href="/api/sample">Get sample data <span>↗</span></a></div>
+        <div class="welcome-actions"><input id="file-input" type="file" accept=".csv,.tsv,.txt,.xlsx,text/csv" hidden><button class="upload-btn" id="upload-btn"><span>＋</span> Import CSV / Excel</button><a class="sample-link" href="/api/sample">Get sample data <span>↗</span></a></div>
       </section>
       <div class="notice" id="notice" role="status" aria-live="polite"></div>
+      <section class="panel mapping-panel" id="mapping-panel" aria-label="Detected columns" hidden>
+        <div class="panel-head"><div><div class="panel-title">Detected columns</div><div class="panel-sub">Your file can use any column names. We matched them automatically; change any that look wrong.</div></div><button id="mapping-apply" class="filter-apply">Re-analyze</button></div>
+        <div class="mapping-grid" id="mapping-grid"></div>
+        <ul class="mapping-warnings" id="mapping-warnings"></ul>
+      </section>
       <section class="filter-row"><div class="section-kicker">PERFORMANCE SNAPSHOT <span class="line"></span></div><div class="filters"><label>FROM<input id="from-date" type="date"></label><span class="filter-dash">—</span><label>TO<input id="to-date" type="date"></label><label>CATEGORY<select id="category-filter"><option value="">All</option></select></label><label>REGION<select id="region-filter"><option value="">All</option></select></label><button id="apply-filter" class="filter-apply">Apply</button></div></section>
       <section class="kpis" aria-label="Key performance indicators">
-        <article class="kpi-card featured"><div class="card-top"><span>NET REVENUE</span><span class="card-icon">↗</span></div><div class="kpi-value" id="revenue">—</div><div class="kpi-foot"><span class="trend-pill" id="growth">—</span><span>vs previous 30 days</span></div><div class="card-orbit"></div></article>
+        <article class="kpi-card featured"><div class="card-top"><span id="revenue-label">NET REVENUE</span><span class="card-icon">↗</span></div><div class="kpi-value" id="revenue">—</div><div class="kpi-foot"><span class="trend-pill" id="growth">—</span><span>vs previous 30 days</span></div><div class="card-orbit"></div></article>
         <article class="kpi-card"><div class="card-top"><span>ORDERS</span><span class="mini-icon">⌑</span></div><div class="kpi-value" id="orders">—</div><div class="kpi-foot"><span class="foot-muted">Across selected period</span></div><div class="kpi-accent"></div></article>
         <article class="kpi-card"><div class="card-top"><span>AVG. ORDER VALUE</span><span class="mini-icon">⌁</span></div><div class="kpi-value" id="aov">—</div><div class="kpi-foot"><span class="foot-muted">Revenue per order</span></div><div class="kpi-accent accent-lilac"></div></article>
         <article class="kpi-card"><div class="card-top"><span>REPEAT CUSTOMERS</span><span class="mini-icon">⟲</span></div><div class="kpi-value" id="repeat">—<small>%</small></div><div class="kpi-foot"><span class="foot-muted">Customers with 2+ orders</span></div><div class="card-accent-number">02</div></article>
